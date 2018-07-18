@@ -5,22 +5,22 @@ import { AuthService } from '../core/auth.service';
   selector: 'app-login',
   template: `
     <div>
-      <form 
+      <form
       (ngSubmit)="onSubmit(formRef.value)"
       #formRef="ngForm">
       <fieldset ngModelGroup="login">
         <input required
         name='name'
         minlength="3"
-        #usernameRef="ngModel" 
+        #usernameRef="ngModel"
         [(ngModel)]="username" type="text">
         {{ usernameRef.errors | json }}
         <div *ngIf="usernameRef.errors?.required">this is required</div>
         <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors</div>
         <input required
         name='psd'
-        #passwordRef="ngModel" 
-        [(ngModel)]="password" 
+        #passwordRef="ngModel"
+        [(ngModel)]="password"
         type="password">
         {{passwordRef.valid}}
         <button type="submit">Login</button>
@@ -39,14 +39,14 @@ import { AuthService } from '../core/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  username = "";
-  password = "";
+  username = '';
+  password = '';
 
   constructor(private service: AuthService) { }
 
   ngOnInit() {
   }
-  
+
   onSubmit(formValue) {
     console.log(formValue);
     console.log(formValue.login.name, formValue.login.psd);
