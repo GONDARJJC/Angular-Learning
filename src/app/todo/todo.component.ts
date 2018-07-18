@@ -9,8 +9,8 @@ import { TodoService } from './todo.service';
   providers: [TodoService]
 })
 export class TodoComponent implements OnInit {
-  todos: Todo[] = []
-  desc = ''
+  todos: Todo[] = [];
+  desc = '';
 
   constructor(private service: TodoService) { }
 
@@ -18,7 +18,9 @@ export class TodoComponent implements OnInit {
   }
 
   addTodo() {
-    this.service.addTodo(this.desc).then(todo => {
+    this.service.addTodo(this.desc).subscribe(todo => {
+      console.log(todo);
+      // this.todos = todo;
       this.todos = [...this.todos, todo];
       this.desc = '';
     })
