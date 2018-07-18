@@ -10,8 +10,10 @@ import { TodoComponent } from './todo/todo.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { TodoService } from './todo/todo.service';
+import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
+import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, TodoComponent],
+  declarations: [AppComponent, LoginComponent, TodoComponent, TodoFooterComponent, TodoHeaderComponent],
   imports: [
     BrowserModule,
     routing,
