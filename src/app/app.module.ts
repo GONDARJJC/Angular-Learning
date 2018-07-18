@@ -9,8 +9,6 @@ import { routing } from './app.routes';
 import { TodoComponent } from './todo/todo.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryTodoDbService } from './todo/todo-data';
 import { TodoService } from './todo/todo.service';
 @NgModule({
   declarations: [AppComponent, LoginComponent, TodoComponent],
@@ -18,8 +16,7 @@ import { TodoService } from './todo/todo.service';
     BrowserModule,
     routing,
     FormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryTodoDbService)
+    HttpClientModule
   ],
   providers: [AuthService, TodoService],
   bootstrap: [AppComponent]

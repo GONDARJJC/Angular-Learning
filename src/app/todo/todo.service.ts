@@ -39,8 +39,8 @@ export class TodoService {
       .delete<Todo>(url, {headers: this.headers});
   }
   // GET /todos
-  getTodos(): Observable<Todo[]> {
+  getTodos(): Observable<any> {
     return this.http
-      .get<Todo[]>(this.api_url);
+      .get<any>('http://127.0.0.1:3500/Js/data.json');
   }
 }

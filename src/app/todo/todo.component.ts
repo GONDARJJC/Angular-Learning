@@ -58,15 +58,13 @@ export class TodoComponent implements OnInit {
       });
   }
   getTodos(): void {
-    console.log(123)
     this.service
       .getTodos()
       .pipe(
         tap(d => console.log(d, 11))
       )
       .subscribe(todos => {
-        console.log(todos);
-        this.todos = [...todos];
+        this.todos = [...todos.data];
       });
   }
 }
