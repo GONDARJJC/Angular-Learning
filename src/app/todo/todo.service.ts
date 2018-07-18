@@ -19,6 +19,28 @@ export class TodoService {
       desc: desc,
       completed: false
     };
-    return this.http.post<Todo>(this.api_url, todo, { headers: this.headers });
+    return this.http
+      .post<Todo>(this.api_url, todo, { headers: this.headers });
+  }
+
+  toggleTodo(todo: Todo): Observable<Todo> {
+    const url = `${this.api_url}/${todo.id}`;
+    console.log(url);
+    console.log(todo);
+    const updatedTodo = Object.assign({}, todo, {completed: !todo.completed});
+    console.log(updatedTodo);
+    return this.http
+      .put<Todo>(url, updatedTodo, { headers: this.headers });
+  }
+
+  deleteTodoById(id: string): Observable<Todo> {
+    const url = `${this.api_url}/${id}`;
+    return this.http
+      .delete<Todo>(url, {headers: this.headers});
+  }
+  // GET /todos
+  getTodos(): Observable<Todo[]> {
+    return this.http
+      .get<Todo[]>(this.api_url);
   }
 }
