@@ -9,6 +9,8 @@ import { routing } from './app.routes';
 import { TodoComponent } from './todo/todo.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryTodoDbService } from './todo/todo-data';
 import { TodoService } from './todo/todo.service';
 import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
@@ -18,7 +20,8 @@ import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
     BrowserModule,
     routing,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryTodoDbService)
   ],
   providers: [AuthService, TodoService],
   bootstrap: [AppComponent]

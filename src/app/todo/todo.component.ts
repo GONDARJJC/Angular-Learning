@@ -64,7 +64,7 @@ export class TodoComponent implements OnInit {
         tap(d => console.log(d, 11))
       )
       .subscribe(todos => {
-        this.todos = [...todos.data];
+        this.todos = [...todos];
       });
   }
 }
