@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Todo } from '../todo.model';
 import { TodoService } from './todo.service';
 import { tap } from 'rxjs/operators';
@@ -11,9 +11,8 @@ import { tap } from 'rxjs/operators';
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   desc = '';
-
   constructor(private service: TodoService) { }
-
+  @Inject('todoService')
   ngOnInit() {
     this.getTodos();
   }

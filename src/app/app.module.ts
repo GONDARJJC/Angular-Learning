@@ -6,24 +6,22 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './core/auth.service';
 import { routing } from './app.routes';
-import { TodoComponent } from './todo/todo.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryTodoDbService } from './todo/todo-data';
-import { TodoService } from './todo/todo.service';
-import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
-import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
+import { TodoModule } from './todo/todo.module';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, TodoComponent, TodoFooterComponent, TodoHeaderComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryTodoDbService)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryTodoDbService),
+    TodoModule
   ],
-  providers: [AuthService, TodoService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
