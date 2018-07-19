@@ -1,0 +1,16 @@
+<section class="main" *ngIf="todos?.length > 0">
+  <input 
+    class="toggle-all" 
+    ype="checkbox"
+    (click)="onToggleAllTriggerd()">
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos" [class.completed]="todo.completed">
+      <app-todo-item
+        [isChecked]="todo.completed"
+        (ToggleTriggered)="onToggleTriggered(todo)"
+        (RemoveTriggered)="onRemoveTriggered(todo)"
+        [todoDesc]="todo.desc">
+      </app-todo-item>
+    </li>
+  </ul>
+</section>

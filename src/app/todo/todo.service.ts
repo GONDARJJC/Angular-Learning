@@ -44,4 +44,17 @@ export class TodoService {
     return this.http
       .get<Todo[]>(this.api_url);
   }
+
+  filterTodos(filter: string): Observable<Todo[]> {
+    switch (filter) {
+      case 'ACTIVE':
+        return this.http
+          .get<Todo[]>(`${this.api_url}?completed=false`);
+      case 'COMPLETED':
+        return this.http
+          .get<Todo[]>(`${this.api_url}?completed=true`);
+      default:
+        return this.getTodos();
+    }
+  }
 }

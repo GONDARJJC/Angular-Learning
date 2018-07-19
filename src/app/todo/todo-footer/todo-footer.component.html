@@ -4,14 +4,14 @@
   </span>
   <ul class="filters">
     <li>
-      <a href="">All</a>
+      <a routerLink="/todo/ALL">All</a>
     </li>
     <li>
-      <a href="">Active</a>
+      <a routerLink="/todo/ACTIVE">Active</a>
     </li>
     <li>
-      <a href="">Completed</a>
+      <a routerLink="/todo/COMPLETED">Completed</a>
     </li>
   </ul>
-  <button class="clear-completed">Clear completed</button>
+  <button class="clear-completed" (click)="onClick()">Clear completed</button>
 </footer>
