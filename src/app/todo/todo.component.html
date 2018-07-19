@@ -1,9 +1,9 @@
 <section class="todoapp">
   <app-todo-header
-    placeholder="What do you want"
-    delay="400"
-    (onTextChanges)="onTextChanges($event)"
-    (onEnterUp)="addTodo()">
+    placeholder="What do you want???"
+    delay="300"
+    (TextChanges)="onTextChanges($event)"
+    (EnterUp)="addTodo()">
   </app-todo-header>
   <section class="main" *ngIf="todos?.length > 0">
     <input class="toggle-all" type="checkbox">

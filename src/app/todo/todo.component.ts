@@ -18,11 +18,14 @@ export class TodoComponent implements OnInit {
     this.getTodos();
   }
 
+  onTextChanges(value) {
+    this.desc = value;
+  }
+
   addTodo() {
     this.service
       .addTodo(this.desc)
       .subscribe(todo => {
-        console.log(todo);
         this.todos = [...this.todos, todo];
         this.desc = '';
       });
@@ -36,13 +39,7 @@ export class TodoComponent implements OnInit {
         tap(d => console.log(d))
       )
       .subscribe(t => {
-        console.log(t, 111);
         this.getTodos();
-        // this.todos = [
-        //   ...this.todos.slice(0, i),
-        //   // t,
-        //   ...this.todos.slice(i + 1)
-        //   ];
       });
   }
   removeTodo(todo: Todo) {
@@ -50,7 +47,6 @@ export class TodoComponent implements OnInit {
     this.service
       .deleteTodoById(todo.id)
       .subscribe((asd) => {
-        console.log(asd);
         this.todos = [
           ...this.todos.slice(0, i),
           ...this.todos.slice(i + 1)

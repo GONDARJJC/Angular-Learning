@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
-import { map, filter, debounceTime, tap, switchAll, distinctUntilChanged } from 'rxjs/operators';
+import { map, debounceTime, tap, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-header',
@@ -10,13 +10,13 @@ import { map, filter, debounceTime, tap, switchAll, distinctUntilChanged } from 
 export class TodoHeaderComponent implements OnInit {
   inputValue = '';
   @Input() placeholder = 'What needs to be done?';
-  @Input() delay = 300;
+  @Input() delay = 100;
 
-  @Output() textChanges = new EventEmitter<string>();
+  @Output() TextChanges = new EventEmitter<string>();
   @Output() EnterUp = new EventEmitter<boolean>();
 
   constructor(private elementRef: ElementRef) {
-    const event$ = fromEvent(elementRef.nativeElement, 'keyup')
+    fromEvent(this.elementRef.nativeElement, 'keyup')
     .pipe(
       tap(d => console.log(d)),
       map(() => this.inputValue),
@@ -24,15 +24,14 @@ export class TodoHeaderComponent implements OnInit {
       distinctUntilChanged()
     )
     .subscribe(input => {
-      console.log(input);
-      this.textChanges.emit(input)
+      this.TextChanges.emit(input);
     });
    }
 
   ngOnInit() {
   }
-
-  enterUp(){
+ 
+  enterUp() {
     this.EnterUp.emit(true);
     this.inputValue = '';
   }
